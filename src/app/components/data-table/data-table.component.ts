@@ -22,7 +22,6 @@ export class DataTableComponent implements AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<Person>;
   dataSource: DataTableDataSource;
-  test: string = '';
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = [
@@ -35,22 +34,20 @@ export class DataTableComponent implements AfterViewInit {
 
   constructor(private service: PersonService) {
     this.dataSource = new DataTableDataSource();
-    //this.service.getPeopleFromFile();
   }
-  funkcija(): void {
 
-    this.service.getPeopleFromFile().subscribe((data) => (this.test = data));
-    //console.log(x);
-    console.log(this.test);
+  loadCsvData(): void {
+    this.service
+      .getPeopleFromFile()
+      .subscribe((data: Person[]) => (this.dataSource.data = this.dataSource.data.concat(data)));
+
   }
-  gumb(): void {
-    console.log(this.test);
-  }
+
 
   ngAfterViewInit(): void {
-    this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
-    this.service.getPeople().subscribe((data) => (this.dataSource.data = data));
+    this.dataSource.sort = this.sort;
+    this.service.getPeople().subscribe((data: Person[]) => (this.dataSource.data = data));
     this.table.dataSource = this.dataSource;
   }
 }

@@ -1,5 +1,7 @@
 <button
   [ngStyle]="{ 'background-color': color }"
+  [disabled]="clicked"
+  (click)="actionMethod(); clicked = true"
   class="btn"
   (click)="onClick()"
 >

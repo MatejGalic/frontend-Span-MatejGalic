@@ -26,12 +26,10 @@ export class PersonService {
 
   getPeopleFromFile(): Observable<any> {
     let x: Person[] = [];
-    let s = 'test'
+    let s = 'test';
     var subject = new Subject<Person[]>();
 
-
     this.getCsvFile().subscribe((data) => {
-
       const list = data.split('\r\n');
       let csvDataArray: any = [];
 
@@ -45,23 +43,6 @@ export class PersonService {
       subject.next(x);
     });
     return subject.asObservable();
-    /*
-    return this.getCsvFile().pipe(
-      map(res => {
-        const list = res.split('\r\n');
-        let csvDataArray: any = [];
-
-        list.forEach((e) => {
-          csvDataArray.push(e);
-        });
-        console.log("ermm");
-        return this.csvToPerson(csvDataArray);
-        })
-    );
-    */
-
-
-
   }
 
   getCsvFile(): Observable<string> {

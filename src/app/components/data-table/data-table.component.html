@@ -1,15 +1,16 @@
-<app-button
+
+<div class="mat-elevation-z8">
+  <app-button
     color="{{  'green' }}"
     text="{{ 'Učitaj' }}"
-    (btnClick)="funkcija()"
+    (btnClick)="loadCsvData()"
   ></app-button>
   <app-button
     color="{{  'green' }}"
     text="{{ 'asdasd' }}"
-    (btnClick)="gumb()"
+    (btnClick)="loadCsvData()"
   ></app-button>
 
-<div class="mat-elevation-z8">
   <table mat-table class="full-width-table" matSort aria-label="Elements">
     <!-- First Name Column -->
     <ng-container matColumnDef="firstName">

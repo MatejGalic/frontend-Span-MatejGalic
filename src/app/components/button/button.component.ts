@@ -8,6 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class ButtonComponent implements OnInit {
   @Input() text: string | undefined;
   @Input() color: string | undefined;
+  @Input() clicked: boolean = false;
   @Output() btnClick = new EventEmitter();
 
   constructor() {}
@@ -16,5 +17,9 @@ export class ButtonComponent implements OnInit {
 
   onClick() {
     this.btnClick.emit();
+  }
+  actionMethod(){
+    this.clicked = true;
+    this.color = 'grey';
   }
 }
