@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { Person } from '../components/data-table/data-table-datasource';
 import { environment } from '../../environments/environment';
 import { map, first } from 'rxjs/operators';
@@ -25,8 +25,27 @@ export class PersonService {
   }
 
   getPeopleFromFile(): Observable<any> {
-    //let x =
+    let x: Person[] = [];
+    let s = 'test'
+    var subject = new Subject<Person[]>();
 
+
+    this.getCsvFile().subscribe((data) => {
+
+      const list = data.split('\r\n');
+      let csvDataArray: any = [];
+
+      list.forEach((e) => {
+        csvDataArray.push(e);
+      });
+
+      s = 'prosao';
+
+      x = this.csvToPerson(csvDataArray);
+      subject.next(x);
+    });
+    return subject.asObservable();
+    /*
     return this.getCsvFile().pipe(
       map(res => {
         const list = res.split('\r\n');
@@ -39,39 +58,13 @@ export class PersonService {
         return this.csvToPerson(csvDataArray);
         })
     );
-
-    /*
-    this.getCsvFile().subscribe((data) => {
-      const list = data.split('\r\n');
-      let csvDataArray: any = [];
-
-      list.forEach((e) => {
-        csvDataArray.push(e);
-      });
-      return of(this.csvToPerson(csvDataArray));
-    });
     */
-    //let returnValue: Observable<Person[]> | undefined = undefined;
 
-    //this.getCsvFile()
-/*
-    this.getCsvFile().pipe(
-        map(res => {
 
-            return res;
-          }),
-          catchError(this.handleError)
-      )
-*/
-/*
 
-    */
-    //console.log(returnValue);
-    //return returnValue;
   }
 
   getCsvFile(): Observable<string> {
-
     return this.http.get(this.csvFilePath, { responseType: 'text' });
   }
 
@@ -94,9 +87,7 @@ export class PersonService {
         }
         people.push(obj);
       }
-      console.log(people);
     }
-
     return people;
   }
 

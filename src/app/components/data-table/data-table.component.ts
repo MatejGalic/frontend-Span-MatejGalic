@@ -22,7 +22,7 @@ export class DataTableComponent implements AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<Person>;
   dataSource: DataTableDataSource;
-  //service: PersonService;
+  test: string = '';
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = [
@@ -38,8 +38,13 @@ export class DataTableComponent implements AfterViewInit {
     //this.service.getPeopleFromFile();
   }
   funkcija(): void {
-    let x = this.service.getPeopleFromFile();
-    console.log(x);
+
+    this.service.getPeopleFromFile().subscribe((data) => (this.test = data));
+    //console.log(x);
+    console.log(this.test);
+  }
+  gumb(): void {
+    console.log(this.test);
   }
 
   ngAfterViewInit(): void {
