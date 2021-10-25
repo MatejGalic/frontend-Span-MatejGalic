@@ -27,7 +27,7 @@
     <!-- Postal Code Column -->
     <ng-container matColumnDef="postalCode">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Poštanski broj</th>
-      <td mat-cell *matCellDef="let row">{{row.postalCode}}</td>
+      <td mat-cell [ngClass]="isnum(row.postalCode) ? 'correctPostalCode' : 'errorPostalCode'" *matCellDef="let row" >{{row.postalCode}}</td>
     </ng-container>
 
     <!-- City Column -->

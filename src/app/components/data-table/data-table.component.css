@@ -1,3 +1,13 @@
 .full-width-table {
   width: 100%;
 }
+
+.correctPostalCode {
+  color: inherit;
+}
+
+.errorPostalCode {
+  background-color: #ED4337;
+  border-radius: 3px;
+  font-weight: bold;
+}

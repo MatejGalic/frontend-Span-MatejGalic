@@ -22,6 +22,7 @@ export class DataTableComponent implements AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<Person>;
   dataSource: DataTableDataSource;
+  //isnum = /^\d+$/.test('');
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = [
@@ -34,6 +35,10 @@ export class DataTableComponent implements AfterViewInit {
 
   constructor(private service: PersonService) {
     this.dataSource = new DataTableDataSource();
+  }
+
+  isnum(val: string): boolean {
+    return /^\d+$/.test(val);
   }
 
   loadCsvData(): void {
