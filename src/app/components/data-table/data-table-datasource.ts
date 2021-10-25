@@ -3,9 +3,10 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
+import { PersonService } from 'src/app/services/person.service';
 
 // TODO: Replace this with your own data model type
-export interface DataTableItem {
+export interface Person {
   firstName: string;
   lastName: string;
   postalCode: string;
@@ -14,122 +15,141 @@ export interface DataTableItem {
 }
 
 // TODO: replace this with real data from your application
-const EXAMPLE_DATA: DataTableItem[] = [
+const EXAMPLE_DATA: Person[] = [
   {
     firstName: 'Mirko',
     lastName: 'Mirkoviæ',
     postalCode: '10000',
     city: 'Zagreb',
     phoneNumber: '+38511234567',
-  },{
+  },
+  {
     firstName: 'Mirko',
     lastName: 'Mirkoviæ',
     postalCode: '10000',
     city: 'Zagreb',
     phoneNumber: '+38511234567',
-  },{
+  },
+  {
     firstName: 'Mirko',
     lastName: 'Mirkoviæ',
     postalCode: '10000',
     city: 'Zagreb',
     phoneNumber: '+38511234567',
-  },{
+  },
+  {
     firstName: 'Mirko',
     lastName: 'Mirkoviæ',
     postalCode: '10000',
     city: 'Zagreb',
     phoneNumber: '+38511234567',
-  },{
+  },
+  {
     firstName: 'Mirko',
     lastName: 'Mirkoviæ',
     postalCode: '10000',
     city: 'Zagreb',
     phoneNumber: '+38511234567',
-  },{
+  },
+  {
     firstName: 'Mirko',
     lastName: 'Mirkoviæ',
     postalCode: '10000',
     city: 'Zagreb',
     phoneNumber: '+38511234567',
-  },{
+  },
+  {
     firstName: 'Mirko',
     lastName: 'Mirkoviæ',
     postalCode: '10000',
     city: 'Zagreb',
     phoneNumber: '+38511234567',
-  },{
+  },
+  {
     firstName: 'Mirko',
     lastName: 'Mirkoviæ',
     postalCode: '10000',
     city: 'Zagreb',
     phoneNumber: '+38511234567',
-  },{
+  },
+  {
     firstName: 'Mirko',
     lastName: 'Mirkoviæ',
     postalCode: '10000',
     city: 'Zagreb',
     phoneNumber: '+38511234567',
-  },{
+  },
+  {
     firstName: 'Mirko',
     lastName: 'Mirkoviæ',
     postalCode: '10000',
     city: 'Zagreb',
     phoneNumber: '+38511234567',
-  },{
+  },
+  {
     firstName: 'Mirko',
     lastName: 'Mirkoviæ',
     postalCode: '10000',
     city: 'Zagreb',
     phoneNumber: '+38511234567',
-  },{
+  },
+  {
     firstName: 'Mirko',
     lastName: 'Mirkoviæ',
     postalCode: '10000',
     city: 'Zagreb',
     phoneNumber: '+38511234567',
-  },{
+  },
+  {
     firstName: 'Mirko',
     lastName: 'Mirkoviæ',
     postalCode: '10000',
     city: 'Zagreb',
     phoneNumber: '+38511234567',
-  },{
+  },
+  {
     firstName: 'Mirko',
     lastName: 'Mirkoviæ',
     postalCode: '10000',
     city: 'Zagreb',
     phoneNumber: '+38511234567',
-  },{
+  },
+  {
     firstName: 'Mirko',
     lastName: 'Mirkoviæ',
     postalCode: '10000',
     city: 'Zagreb',
     phoneNumber: '+38511234567',
-  },{
+  },
+  {
     firstName: 'Mirko',
     lastName: 'Mirkoviæ',
     postalCode: '10000',
     city: 'Zagreb',
     phoneNumber: '+38511234567',
-  },{
+  },
+  {
     firstName: 'Mirko',
     lastName: 'Mirkoviæ',
     postalCode: '10000',
     city: 'Zagreb',
     phoneNumber: '+38511234567',
-  },{
+  },
+  {
     firstName: 'Mirko',
     lastName: 'Mirkoviæ',
     postalCode: '10000',
     city: 'Zagreb',
     phoneNumber: '+38511234567',
-  },{
+  },
+  {
     firstName: 'Mirko',
     lastName: 'Mirkoviæ',
     postalCode: '10000',
     city: 'Zagreb',
     phoneNumber: '+38511234567',
-  },{
+  },
+  {
     firstName: 'Mirko',
     lastName: 'Mirkoviæ',
     postalCode: '10000',
@@ -164,8 +184,8 @@ const EXAMPLE_DATA: DataTableItem[] = [
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class DataTableDataSource extends DataSource<DataTableItem> {
-  data: DataTableItem[] = EXAMPLE_DATA;
+export class DataTableDataSource extends DataSource<Person> {
+  data: Person[] = [];
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
 
@@ -178,7 +198,7 @@ export class DataTableDataSource extends DataSource<DataTableItem> {
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<DataTableItem[]> {
+  connect(): Observable<Person[]> {
     if (this.paginator && this.sort) {
       // Combine everything that affects the rendered data into one update
       // stream for the data-table to consume.
@@ -208,7 +228,7 @@ export class DataTableDataSource extends DataSource<DataTableItem> {
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: DataTableItem[]): DataTableItem[] {
+  private getPagedData(data: Person[]): Person[] {
     if (this.paginator) {
       const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
       return data.splice(startIndex, this.paginator.pageSize);
@@ -221,7 +241,7 @@ export class DataTableDataSource extends DataSource<DataTableItem> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: DataTableItem[]): DataTableItem[] {
+  private getSortedData(data: Person[]): Person[] {
     if (!this.sort || !this.sort.active || this.sort.direction === '') {
       return data;
     }
