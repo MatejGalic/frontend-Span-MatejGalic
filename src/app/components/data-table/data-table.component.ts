@@ -35,6 +35,11 @@ export class DataTableComponent implements AfterViewInit {
 
   constructor(private service: PersonService) {
     this.dataSource = new DataTableDataSource();
+    //this.service.getPeopleFromFile();
+  }
+  funkcija(): void {
+    let x = this.service.getPeopleFromFile();
+    console.log(x);
   }
 
   ngAfterViewInit(): void {
