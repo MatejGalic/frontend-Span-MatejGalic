@@ -9,6 +9,7 @@ import {
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
 import { DataTableDataSource, Person } from './data-table-datasource';
 import { PersonService } from 'src/app/services/person.service';
 
@@ -44,15 +45,18 @@ export class DataTableComponent implements AfterViewInit {
   loadCsvData(): void {
     this.service
       .getPeopleFromFile()
-      .subscribe((data: Person[]) => (this.dataSource.data = this.dataSource.data.concat(data)));
-
+      .subscribe(
+        (data: Person[]) =>
+          (this.dataSource.data = this.dataSource.data.concat(data))
+      );
   }
-
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    this.service.getPeople().subscribe((data: Person[]) => (this.dataSource.data = data));
+    this.service
+      .getPeople()
+      .subscribe((data: Person[]) => (this.dataSource.data = data));
     this.table.dataSource = this.dataSource;
   }
 }

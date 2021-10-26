@@ -7,19 +7,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 
-import { MatToolbarModule} from '@angular/material/toolbar';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { DataTableComponent } from './components/data-table/data-table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatButtonModule } from '@angular/material/button';
 import { Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ButtonComponent } from './components/button/button.component';
 
 // TODO: izbrisati ako ne radi
-const appRoutes: Routes = [
-  { path: '', component: DataTableComponent }
-];
+const appRoutes: Routes = [{ path: '', component: DataTableComponent }];
 
 @NgModule({
   declarations: [
@@ -27,7 +26,7 @@ const appRoutes: Routes = [
     HeaderComponent,
     FooterComponent,
     DataTableComponent,
-    ButtonComponent
+    ButtonComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,9 +36,10 @@ const appRoutes: Routes = [
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    HttpClientModule
+    MatButtonModule,
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

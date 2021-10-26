@@ -10,7 +10,7 @@
     text="{{ 'asdasd' }}"
     (btnClick)="loadCsvData()"
   ></app-button>
-
+  <button mat-flat-button color="accent">Accent</button>
   <table mat-table class="full-width-table" matSort aria-label="Elements">
     <!-- First Name Column -->
     <ng-container matColumnDef="firstName">
@@ -27,7 +27,7 @@
     <!-- Postal Code Column -->
     <ng-container matColumnDef="postalCode">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Poštanski broj</th>
-      <td mat-cell [ngClass]="isnum(row.postalCode) ? 'correctPostalCode' : 'errorPostalCode'" *matCellDef="let row" >{{row.postalCode}}</td>
+      <td mat-cell [ngClass]="isnum(row.postalCode) ? '' : 'errorPostalCode'" *matCellDef="let row" >{{row.postalCode}}</td>
     </ng-container>
 
     <!-- City Column -->
@@ -43,7 +43,7 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-row [ngClass]="isnum(row.postalCode) ? '' : 'errorRow'" *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
   <mat-paginator #paginator
