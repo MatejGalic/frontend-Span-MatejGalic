@@ -1,0 +1,53 @@
+<form class="add-form" (ngSubmit)="onSubmit()">
+  <div class="form-control">
+    <label for="firstName">Ime</label>
+    <input
+      type="text"
+      name="firstName"
+      [(ngModel)]="firstName"
+      id="firstName"
+      placeholder="Ime"
+    />
+  </div>
+  <div class="form-control">
+    <label for="lastName">Prezime</label>
+    <input
+      type="text"
+      name="lastName"
+      [(ngModel)]="lastName"
+      id="lastName"
+      placeholder="Prezime"
+    />
+  </div>
+  <div class="form-control">
+    <label for="postalCode">Poštanski broj</label>
+    <input
+      type="text"
+      name="postalCode"
+      [(ngModel)]="postalCode"
+      id="postalCode"
+      placeholder="Poštanski broj"
+    />
+  </div>
+  <div class="form-control">
+    <label for="city">Grad</label>
+    <input
+      type="text"
+      name="city"
+      [(ngModel)]="city"
+      id="city"
+      placeholder="Grad"
+    />
+  </div>
+  <div class="form-control">
+    <label for="phoneNumber">Telefonski broj</label>
+    <input
+      type="text"
+      name="phoneNumber"
+      [(ngModel)]="phoneNumber"
+      id="phoneNumber"
+      placeholder="Telefonski broj"
+    />
+  </div>
+  <button color="primary" class="btn" mat-flat-button>Spremi</button>
+</form>

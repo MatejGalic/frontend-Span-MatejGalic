@@ -119,13 +119,13 @@ export class DataTableDataSource extends DataSource<Person> {
         case 'firstName':
           return compare(a.firstName, b.firstName, isAsc);
         case 'lastName':
-          return compare(+a.lastName, +b.lastName, isAsc);
+          return compare(a.lastName, b.lastName, isAsc);
         case 'postalCode':
-          return compare(+a.postalCode, +b.postalCode, isAsc);
+          return compare(a.postalCode, b.postalCode, isAsc);
         case 'city':
-          return compare(+a.city, +b.city, isAsc);
+          return compare(a.city, b.city, isAsc);
         case 'phoneNumber':
-          return compare(+a.phoneNumber, +b.phoneNumber, isAsc);
+          return compare(a.phoneNumber, b.phoneNumber, isAsc);
         default:
           return 0;
       }

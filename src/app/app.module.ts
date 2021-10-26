@@ -13,12 +13,10 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
-import { Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 import { ButtonComponent } from './components/button/button.component';
-
-// TODO: izbrisati ako ne radi
-const appRoutes: Routes = [{ path: '', component: DataTableComponent }];
+import { AddPersonComponent } from './components/add-person/add-person.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +25,7 @@ const appRoutes: Routes = [{ path: '', component: DataTableComponent }];
     FooterComponent,
     DataTableComponent,
     ButtonComponent,
+    AddPersonComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,6 +37,7 @@ const appRoutes: Routes = [{ path: '', component: DataTableComponent }];
     MatSortModule,
     MatButtonModule,
     HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

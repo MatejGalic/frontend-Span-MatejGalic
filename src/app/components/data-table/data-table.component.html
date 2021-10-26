@@ -1,16 +1,13 @@
+<app-add-person
+(onAddPerson)="loadCsvData()"
+></app-add-person>
 
 <div class="mat-elevation-z8">
   <app-button
-    color="{{  'green' }}"
     text="{{ 'Učitaj' }}"
     (btnClick)="loadCsvData()"
   ></app-button>
-  <app-button
-    color="{{  'green' }}"
-    text="{{ 'asdasd' }}"
-    (btnClick)="loadCsvData()"
-  ></app-button>
-  <button mat-flat-button color="accent">Accent</button>
+
   <table mat-table class="full-width-table" matSort aria-label="Elements">
     <!-- First Name Column -->
     <ng-container matColumnDef="firstName">

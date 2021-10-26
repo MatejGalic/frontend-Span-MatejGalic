@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, Subject } from 'rxjs';
 import { Person } from '../components/data-table/data-table-datasource';
 import { environment } from '../../environments/environment';
-import { map, first } from 'rxjs/operators';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -20,10 +19,20 @@ export class PersonService {
 
   constructor(private http: HttpClient) {}
 
+  /**
+   * Gets data from API
+   *
+   * @returns `Observable<Person[]>` from API
+   */
   getPeople(): Observable<Person[]> {
     return this.http.get<Person[]>(this.apiUrl);
   }
 
+  /**
+   * Gets `Observable<Person[]>` data from local .csv file
+   *
+   * @returns `Observable<Person[]>` from file
+   */
   getPeopleFromFile(): Observable<any> {
     let x: Person[] = [];
     let s = 'test';
@@ -45,10 +54,21 @@ export class PersonService {
     return subject.asObservable();
   }
 
+  /**
+   * Gets `Observable<string>` directly from local .csv file
+   *
+   * @returns `Observable<string>` data from .csv file
+   */
   getCsvFile(): Observable<string> {
     return this.http.get(this.csvFilePath, { responseType: 'text' });
   }
 
+  /**
+   * Converts .csv data to `Person[]`
+   *
+   * @param data csv formatted text
+   * @returns data formatted as `Person[]`
+   */
   csvToPerson(data: string[]): Person[] {
     const people: Person[] = [];
     const headers = [
@@ -73,6 +93,6 @@ export class PersonService {
   }
 
   addPerson(person: Person): Observable<Person> {
-    return this.http.post<Person>(this.apiUrl + '/person', person, httpOptions);
+    return this.http.post<Person>(this.apiUrl, person, httpOptions);
   }
 }
