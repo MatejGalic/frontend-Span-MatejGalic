@@ -4,9 +4,10 @@
     <input
       type="text"
       name="firstName"
-      [(ngModel)]="firstName"
+      [(ngModel)]="person.firstName"
       id="firstName"
       placeholder="Ime"
+      required
     />
   </div>
   <div class="form-control">
@@ -14,7 +15,7 @@
     <input
       type="text"
       name="lastName"
-      [(ngModel)]="lastName"
+      [(ngModel)]="person.lastName"
       id="lastName"
       placeholder="Prezime"
     />
@@ -24,7 +25,7 @@
     <input
       type="text"
       name="postalCode"
-      [(ngModel)]="postalCode"
+      [(ngModel)]="person.postalCode"
       id="postalCode"
       placeholder="Poštanski broj"
     />
@@ -34,7 +35,7 @@
     <input
       type="text"
       name="city"
-      [(ngModel)]="city"
+      [(ngModel)]="person.city"
       id="city"
       placeholder="Grad"
     />
@@ -44,7 +45,7 @@
     <input
       type="text"
       name="phoneNumber"
-      [(ngModel)]="phoneNumber"
+      [(ngModel)]="person.phoneNumber"
       id="phoneNumber"
       placeholder="Telefonski broj"
     />

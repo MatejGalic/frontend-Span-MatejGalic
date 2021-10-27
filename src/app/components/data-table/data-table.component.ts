@@ -1,18 +1,9 @@
-import {
-  AfterViewInit,
-  Component,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-  ViewChild,
-} from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
-import { MatButtonModule } from '@angular/material/button';
-import { DataTableDataSource, Person } from './data-table-datasource';
+import { MatTable } from '@angular/material/table';
 import { PersonService } from 'src/app/services/person.service';
-import { of } from 'rxjs';
+import { DataTableDataSource, Person } from './data-table-datasource';
 
 @Component({
   selector: 'app-data-table',
