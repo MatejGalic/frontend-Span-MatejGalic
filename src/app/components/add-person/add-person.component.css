@@ -1,22 +1,46 @@
-.btn {
-  display: inline-block;
+.btn-save {
   border: none;
-  padding: 5px 20px;
-  margin: 5px;
+  padding: 5px 15px;
+  margin-top: 10px;
   border-radius: 5px;
   cursor: pointer;
   text-decoration: none;
   font-size: 15px;
   font-family: inherit;
 }
-.btn:focus {
+.btn-save-save:focus {
   outline: none;
 }
-.btn:active {
+.btn-save:active {
   transform: scale(0.98);
 }
 
-.btn-block {
+.add-form {
+  display: flex;
+  overflow: auto;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.form-control {
   display: block;
-  width: 100%;
+  margin: 5px 1%;
+  height: 100%;
+}
+
+.form-control label {
+  display: block;
+  margin: 5px 10px 5px 0;
+}
+
+.form-control input {
+  display: block;
+  margin: 5px 10px 5px 0;
+  padding: 10px;
+}
+
+.form-control-check {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

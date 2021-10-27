@@ -12,6 +12,7 @@ import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { DataTableDataSource, Person } from './data-table-datasource';
 import { PersonService } from 'src/app/services/person.service';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-data-table',
@@ -54,7 +55,7 @@ export class DataTableComponent implements AfterViewInit {
   loadCsvData(): void {
     this.service.getPeopleFromFile().subscribe((data: Person[]) => {
       this.dataSource.data = this.dataSource.data.concat(data);
-      this.table.dataSource = this.dataSource;
+      this.refresh();
     });
   }
 
@@ -65,5 +66,14 @@ export class DataTableComponent implements AfterViewInit {
       this.dataSource.data = data;
       this.table.dataSource = this.dataSource;
     });
+  }
+
+  addPerson(e: Person) {
+    this.dataSource.data.push(e);
+    this.refresh();
+  }
+
+  refresh(): void {
+    this.paginator._changePageSize(this.paginator.pageSize); // trik da se tablica osvjezi
   }
 }

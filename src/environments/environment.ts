@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiEndpoint: 'https://localhost:44379/api',
+  apiEndpoint: 'https://localhost:5001/api',
   csvFilePath: "assets/podaci.csv"
 };
 

@@ -1,5 +1,6 @@
-footer {
+mat-toolbar {
   clear: both;
   position: relative;
+  padding-bottom: 50px;
   bottom: 0;
 }
